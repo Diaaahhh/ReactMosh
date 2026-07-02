@@ -8,6 +8,7 @@ function App() {
     <div>
       <Message/>
       <ListGroup/>
+      <ListGroup/>
     </div>
   )
 }
