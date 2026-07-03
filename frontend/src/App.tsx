@@ -1,19 +1,18 @@
-import React from 'react'
-import Message from "../src/Message"
-import ListGroup from "./Component/ListGroup"
-const handleOnSelection= (name: string)=> {
-  console.log(name);
-  
-}
+import React, { useState } from 'react'
+import Button from './Component/Button'
+import Alert from './Component/Alert'
 
 function App() {
-    const names = ["Dia", "Muna", "Mono"];
+  const [alertVisibility, setAlertVisibility]= useState(false)
   return (
     <div>
-      <Message/>
-      <ListGroup heading= "The gang" items= {names} onSelection={handleOnSelection} />
-      <ListGroup heading= "Favourites" items={["pink", "mango", "resort"]} onSelection={handleOnSelection}/>
-    </div>
+      
+    {alertVisibility&&
+    <Alert onClose={()=>{setAlertVisibility(false)}}>
+      Saved successfully
+      </Alert>}
+     <Button name={"Save"} colour={"success"} onClick={()=>{setAlertVisibility(true)}}></Button>
+     </div>
   )
 }
 
