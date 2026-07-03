@@ -4,24 +4,28 @@ import React, { useState } from "react";
 //  const handleClick= (event: MouseEvent )=>{
 //   console.log(event)
 // }
-// interface ListGroupProps{
-// heading: 
-// }
+interface ListGroupProps{
+heading: string,
+items: string[],
+onSelection: (name: string)=> void
+}
 
-function ListGroup() {
+function ListGroup({heading, items,onSelection }:ListGroupProps) {
   const names = ["Dia", "Muna", "Mono"];
   const [selectedIndex, setSelectedIndex]= useState(-1)
   // names = [];
 const messageFunc= ( message)=>{
-  return names.length == 0 && <p>{message}</p> || <h4>This is your squad</h4>
+  return names.length == 0 && <p>{message}</p> || <h4>{heading}</h4>
 }
   return (
     <>
       
       {messageFunc("no squad found")}
       <ul className="list-group">
-        {names.map((name, index) => (
-          <li className= {index==selectedIndex?"list-group-item active":"list-group-item"} onClick={()=>{setSelectedIndex(index)}} key={index}> {name}</li>
+        {items.map((name, index) => (
+          <li className= {index==selectedIndex?"list-group-item active":"list-group-item"} onClick={()=>{setSelectedIndex(index);
+onSelection(name);
+          }} key={index}> {name}</li>
         ))}
       </ul>
     </>

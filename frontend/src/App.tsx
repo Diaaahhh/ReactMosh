@@ -1,14 +1,18 @@
+import React from 'react'
 import Message from "../src/Message"
 import ListGroup from "./Component/ListGroup"
-
-import React from 'react'
+const handleOnSelection= (name: string)=> {
+  console.log(name);
+  
+}
 
 function App() {
+    const names = ["Dia", "Muna", "Mono"];
   return (
     <div>
       <Message/>
-      <ListGroup/>
-      <ListGroup/>
+      <ListGroup heading= "The gang" items= {names} onSelection={handleOnSelection} />
+      <ListGroup heading= "Favourites" items={["pink", "mango", "resort"]} onSelection={handleOnSelection}/>
     </div>
   )
 }
